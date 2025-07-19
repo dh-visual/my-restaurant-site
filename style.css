@@ -934,4 +934,25 @@ a {
     aspect-ratio: 16 / 9;
   }
 }
+
+@media (max-width: 768px) {
+  .placeholder-content {
+    padding: 60px 20px;  /* 缩小左右间距，原来是 50px */
+  }
+
+  .main-text-block {
+    font-size: 1.35em;     /* 原来是 clamp(2em, 5vw, 3.8em)，这里直接固定略大值 */
+    line-height: 1.8;      /* 行间距略增加 */
+    padding: 0 10px;       /* 额外微调内边距 */
+  }
+
+  .main-text-block p {
+    margin-bottom: 1em;    /* 增加段落间隔，让分行更自然 */
+  }
+}
+
+  .main-text-block span[class^="icon-"] {
+    width: 1.6em;
+    height: 1.6em;
+  }
 }
