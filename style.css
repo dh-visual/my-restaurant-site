@@ -948,8 +948,8 @@ a {
 }
 
   .main-text-block span[class^="icon-"] {
-    width: 1.6em;
-    height: 1.6em;
+    width: 1.8em;
+    height: 1.8em;
   }
   @media (max-width: 768px) {
   .highlight-text {
