@@ -1,0 +1,787 @@
+/* css/style.css */
+
+/* 通用样式和重置 */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+    background-color: #F7F7F7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 导航栏样式 */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease;
+    padding: 15px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.main-header.scrolled {
+    background-color: #F7F7F7;
+    color: #333;
+    padding: 10px 5px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.navbar-left,
+.navbar-right {
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.navbar-left {
+    transition: color 0.3s ease;
+}
+
+.navbar-left:hover {
+    color: #C08C54;
+}
+
+.menu-icon {
+    margin-right: 10px;
+}
+
+.navbar-center .sato-logo {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
+.btn-prenota {
+    border: 1px solid currentColor;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-prenota:hover {
+    background-color: transparent;
+    color: #C08C54;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 150vh;
+    min-height: 100vh;
+    background-image: url('../images/hero_sushi.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    color: #fff;
+    z-index: 0;
+}
+
+.hero-content-wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    pointer-events: none;
+}
+
+.hero-text-overlay {
+    pointer-events: auto;
+    z-index: 2;
+    margin-bottom: 200px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.hero-text-overlay h1,
+.hero-text-overlay h2 {
+    font-size: 5.5em;
+    font-weight: normal;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    margin-top: 5px;
+}
+
+.placeholder-content {
+    background-color: #F7F7F7;
+    padding: 100px 50px;
+    text-align: center;
+    z-index: 500;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.main-text-block {
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: 'Georgia', serif;
+    font-size: 3.8em;
+    line-height: 1.5;
+    color: #333;
+    text-align: center;
+}
+
+.icon-sushi-bowl {
+  background-image: url('../images/icon-sushi-bowl.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+}
+
+.icon-sake-bottle {
+  background-image: url('../images/icon-sake-bottle.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+}
+
+.main-text-block p {
+    margin-bottom: 0.5em;
+}
+
+.main-text-block span[class^="icon-"] {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1.2em;
+    height: 1.2em;
+    margin: 0 5px;
+}
+
+.dishes-gallery-section {
+    position: relative;
+    display: flex;
+    min-height: 300vh;
+    background-color: #F7F7F7;
+    overflow: hidden;
+}
+
+.gallery-bg-image {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 50%;
+    background-image: url('../images/background1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.gallery-content-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 100vw;
+    margin: 0 auto;
+}
+
+.gallery-text-column {
+    flex: 0 0 35%;
+    padding: 0 40px 0 60px;
+    text-align: left;
+    color: #333;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.gallery-text-column .slide-counter {
+    font-size: 1.3em;
+    margin-bottom: 50px;
+    color: #C08C54;
+}
+
+.gallery-text-column h2.slide-title {
+    font-size: 3.6em;
+    font-weight: normal;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.slide-description-content p {
+    font-size: 1.3em;
+    line-height: 1.8;
+    margin-bottom: 1em;
+    color: #555;
+}
+
+.slide-description-content p:last-child {
+    margin-bottom: 0;
+}
+
+.gallery-text-column .btn-menu {
+    border: 1px solid #333;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #333;
+    margin-top: 40px;
+}
+
+.gallery-text-column .btn-menu:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.gallery-image-column {
+    flex: 0 0 65%;
+    padding-right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    margin-left: 0;
+}
+
+.image-slider-container {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.gallery-dish-image {
+    width: auto;
+    height: 100vh;
+    max-width: 100%;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+/* 新增 highlight-section 样式 */
+
+.highlight-section {
+  background-color: #f7f7f7;
+  padding: 20px 8vw 100px 8vw;
+}
+
+.highlight-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 100%;
+}
+
+.highlight-text {
+  flex: 0 0 45%;
+  font-family: 'Georgia', serif;
+  color: #333;
+  padding-left: 1vw;   /* 新增左内边距 */
+  padding-right: 5vw;  /* 减少右内边距 */
+  padding-bottom: 10px; /* 新增，为按钮腾出空间 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.highlight-heading {
+  font-size: 3.8em;
+  font-weight: 500;
+  margin-bottom: 60px;
+  line-height: 1.2;
+}
+
+.highlight-text p {
+  font-size: 1.25em;
+  line-height: 1.9;
+  color: #333;
+  font-family: Arial, sans-serif; 
+}
+
+.highlight-image {
+  flex: 0 0 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 0;
+  position: relative;
+  overflow: visible;
+}
+
+.highlight-image img {
+  width: 70vw; /* 占满整个视口宽度 */
+  max-width: none;
+  height: auto;
+  object-fit: cover;
+  margin-right: calc(-29vw + 50%); /* 让右边对齐，同时左边抵达中线 */
+  border-radius: 8px;
+}
+
+.btn-menu {
+  display: inline-flex; /* 精准包裹内容 */
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  padding: 12px 20px;
+  font-size: 1.05em;     /* 略大一点点，避免按钮太小 */
+  font-weight: normal;   /* 如需与下方按钮一致 */
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background-color: #C08C54;
+  border: none;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: fit-content;         /* 核心属性，让按钮宽度匹配内容 */
+  max-width: 100%;
+}
+
+.btn-menu:hover {
+  background-color: #EBCB9B;
+}
+
+.icon-marquee {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f7f7f7;
+  padding-top: 80px;      /* ↑ 增加上内边距 */
+  padding-bottom: 30px;   /* ↑ 增加下内边距 */
+  margin-bottom: 105px;   /* 保持与下一个内容之间的外边距 */
+  box-sizing: border-box;
+}
+
+.icon-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 80s linear infinite;
+  align-items: center;
+  gap: 60px; /* 图标间距 */
+}
+
+.marquee-icon {
+  height: 120px; /* 图标大小 */
+  width: auto;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50%));
+  }
+}
+.full-width-banner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.full-width-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.chef-section {
+  background-color: #1B1414;
+  color: #fff;
+  padding: 100px 6vw; /* 增加左右留白 */
+}
+
+.chef-wrapper {
+  max-width: 1200px;       /* 限制整体宽度 */
+  margin: 0 auto;          /* 居中 */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.chef-left {
+  flex: 0 0 55%;           /* 原来48%，现在更窄 */
+}
+
+.chef-left .chef-photo {
+  width: 40vw;                /* 视口宽度的 90% */
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  transform: translateX(-4vw); /* 向左移动图片，达到视觉左靠、右对齐中线效果 */
+}
+
+.chef-right {
+  flex: 0 0 39%;           /* 同样缩小右栏宽度 */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.decor-icon {
+  width: 50px;
+  height: auto;
+}
+
+.section-label {
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  color: #c7a97f;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-size: 3.8em;              /* 与 .highlight-heading 相同 */
+  font-weight: 500;              /* 相同粗细 */
+  font-family: 'Georgia', serif; /* 与上面一致 */
+  line-height: 1.2;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.section-text {
+  font-size: 1.25em;            /* 段落更大 */
+  line-height: 1.9;
+  color: #fff;
+  margin-bottom: 40px;          /* 增加段落与图片间距 */
+}
+
+.chef-dish {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* 动效 */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.split-block-section {
+  width: 100%;
+  background-color: #111;
+}
+
+.split-block-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.split-block {
+  position: relative;
+  flex: 1 1 50%;
+  overflow: hidden;
+  min-height: 60vh;
+}
+
+.split-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.7);
+}
+
+.split-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.split-icon {
+  width: 60px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.split-title {
+  font-size: 3.8em;
+  font-weight: 500;
+  font-family: 'Georgia', serif;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.split-button {
+  margin-top: 20px;
+  background-color: #fff;
+  color: #111;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.split-button:hover {
+  background-color: #C08C54;
+  color: #fff;
+}
+/* 初始状态 */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1.6s ease-out, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 滚动进入时激活 */
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* 公共初始状态 */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 通用进入后 */
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 延迟设置：标题无延迟 */
+.split-title.animate-on-scroll {
+  transition-delay: 0s;
+}
+
+/* 按钮稍后进入 */
+.split-button.animate-on-scroll {
+  transition-delay: 0.2s;
+}
+
+/* ===== Esperienza / Prenota ===== */
+.experience-section {
+  background-color: #F7F7F7;   /* 与页面其它段落保持呼吸感 */
+  padding: 170px 6vw 205px 6vw;          /* 上下留白，左右自适应 */
+  text-align: center;
+  position: relative;
+}
+
+.experience-title {
+  /* 与 .section-title 保持完全一致的排版 */
+  font-size: 3.8em;
+  font-weight: 500;
+  font-family: 'Georgia', serif;
+  line-height: 1.2;
+  color: #333;
+}
+
+/* 图片容器：强制 1:1 比例，居中 */
+.experience-image-wrapper {
+  position: relative;
+  width: min(500px, 70vw);     /* 最大 420px，移动端更窄 */
+  aspect-ratio: 1 / 1;         /* 正方形 */
+  margin: 70px auto 0;         /* 与标题分隔 */
+  overflow: hidden;
+}
+
+/* 背景图片 */
+.experience-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* “PRENOTA” 叠加文字 */
+/* 悬浮在整个 section 中央的大标题 PRENOTA */
+.experience-overlay-global {
+  position: absolute;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Georgia', serif;
+  font-weight: 500;
+  color: #C08C54;
+  font-size: clamp(6rem, 16vw, 14rem);  /* 更大、更强响应性 */
+  line-height: 1;
+  letter-spacing: 5px;
+  pointer-events: auto;
+  z-index: 2;
+  white-space: nowrap;
+  opacity: 1; /* 可调，增强沉浸感 */
+  cursor: url('../images/cursor-arrow.png') 16 16, pointer;
+}
+
+/* ====== 动效：沿用之前 animate-on-scroll 规则，但稍做延迟区分 ====== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease-out,
+              transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 先标题后 PRENOTA：延迟进入 */
+.experience-title.animate-on-scroll   { transition-delay: 0s;   }
+.experience-overlay.animate-on-scroll { transition-delay: 0.4s; }
+
+.footer-info {
+  background-color: #f7f7f7;
+  padding: 90px 8vw;                /* 上下左右统一为 60px */
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0; /* 新增底部灰线 */
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: nowrap;           /* 强制一行排列 */
+  justify-content: space-between; /* 四列之间平分剩余空间 */
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+  gap: 0;                      /* 不需要 gap，因为 space-between 自动分配 */
+}
+
+.footer-column {
+  flex: 0 0 25%;     /* 每列固定占 25% 宽度，共四列刚好100% */
+  min-width: 0;
+}
+
+.footer-column h4 {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #C08C54;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-column p {
+  font-size: 1.0em;
+  line-height: 1.7;
+}
+
+.footer-column a {
+  color: #333;
+  text-decoration: underline;
+}
+.footer-columns {
+  justify-content: flex-start; /* 原来是 space-between，现在统一靠左 */
+  gap: 40px; /* 调整间距以容纳第四段 */
+}
+
+.footer-column.icon-only {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 4px;
+}
+
+.footer-column.icon-only img {
+  height: 40px;  /* 你可以根据视觉实际调整大小 */
+  width: auto;
+  display: block;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 8vw 50px 8vw;
+  background-color: #f7f7f7;
+  font-size: 0.85em;
+  color: #777;
+  border-top: 1px solid #e0e0e0;
+  flex-wrap: wrap;
+}
+
+.footer-bottom a {
+  color: #777;
+  text-decoration: underline;
+  margin: 0 4px;
+  font-weight: normal;
+}
+
+.footer-bottom a:hover {
+  color: #C08C54;
+}
+
+.footer-bottom-left,
+.footer-bottom-right {
+  margin-top: 5px;
+}
