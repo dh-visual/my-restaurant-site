@@ -369,7 +369,7 @@ a {
   height: auto;
   object-fit: cover;
   margin-right: calc(-29vw + 50%); /* 让右边对齐，同时左边抵达中线 */
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .btn-menu {
@@ -465,7 +465,7 @@ a {
 .chef-left .chef-photo {
   width: 40vw;                /* 视口宽度的 90% */
   height: auto;
-  border-radius: 8px;
+  border-radius: 6px;
   display: block;
   transform: translateX(-4vw); /* 向左移动图片，达到视觉左靠、右对齐中线效果 */
 }
@@ -508,7 +508,7 @@ a {
 .chef-dish {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 /* 动效 */
@@ -661,13 +661,14 @@ a {
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 6px;
 }
 
 /* “PRENOTA” 叠加文字 */
 /* 悬浮在整个 section 中央的大标题 PRENOTA */
 .experience-overlay-global {
   position: absolute;
-  top: 62%;
+  top: 57%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Georgia', serif;
