@@ -942,14 +942,14 @@ a {
 
   .main-text-block {
     font-size: 1.35em;     /* 原来是 clamp(2em, 5vw, 3.8em)，这里直接固定略大值 */
-    line-height: 1.8;      /* 行间距略增加 */
+    line-height: 1.6;      /* 行间距略增加 */
     padding: 0 10px;       /* 额外微调内边距 */
   }
 }
 
   .main-text-block span[class^="icon-"] {
-    width: 1.8em;
-    height: 1.8em;
+    width: 1.6em;
+    height: 1.6em;
   }
   @media (max-width: 768px) {
   .highlight-text {
