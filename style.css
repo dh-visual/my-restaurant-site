@@ -953,13 +953,13 @@ a {
   }
   @media (max-width: 768px) {
   .highlight-text {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .chef-right {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 @media (max-width: 768px) {
