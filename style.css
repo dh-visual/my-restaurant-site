@@ -131,7 +131,8 @@ a {
 
 .hero-text-overlay h1,
 .hero-text-overlay h2 {
-    font-size: 5.5em;
+    font-family: 'Georgia', serif;
+    font-size: 6.0em;
     font-weight: normal;
     letter-spacing: 2px;
     line-height: 1.2;
