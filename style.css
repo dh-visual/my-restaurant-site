@@ -945,14 +945,47 @@ a {
     line-height: 1.8;      /* 行间距略增加 */
     padding: 0 10px;       /* 额外微调内边距 */
   }
-
-  .main-text-block p {
-    margin-bottom: 1em;    /* 增加段落间隔，让分行更自然 */
-  }
 }
 
   .main-text-block span[class^="icon-"] {
-    width: 1.6em;
-    height: 1.6em;
+    width: 1.8em;
+    height: 1.8em;
   }
+  @media (max-width: 768px) {
+  .highlight-text {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .chef-right {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .split-block {
+    min-height: auto; /* 去掉默认高度 */
+  }
+
+  .split-image {
+    width: 100vw;            /* 图片宽度铺满屏幕 */
+    height: 100vw;           /* 高度 = 宽度，变成正方形 */
+    object-fit: cover;       /* 保持图片填满区域，不压缩变形 */
+    display: block;
+  }
+
+  .split-overlay {
+    padding: 20px;
+    justify-content: center;
+  }
+
+  .split-title {
+    font-size: 2em;
+  }
+
+  .split-button {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+}
 }
