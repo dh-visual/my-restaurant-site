@@ -924,4 +924,14 @@ a {
     border-radius: 10px;
   }
 }
+@media (max-width: 768px) {
+  .split-block {
+    min-height: auto;
+  }
+
+  .split-image {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
 }
