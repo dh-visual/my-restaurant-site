@@ -99,7 +99,7 @@ a {
     width: 100%;
     height: 150vh;
     min-height: 100vh;
-    background-image: url('../images/hero_sushi.jpg');
+    background-image: url('images/hero_sushi.jpg');
     background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;
@@ -161,7 +161,7 @@ a {
 }
 
 .icon-sushi-bowl {
-  background-image: url('../images/icon-sushi-bowl.png');
+  background-image: url('images/icon-sushi-bowl.png');
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
@@ -171,7 +171,7 @@ a {
 }
 
 .icon-sake-bottle {
-  background-image: url('../images/icon-sake-bottle.png');
+  background-image: url('images/icon-sake-bottle.png');
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
@@ -206,7 +206,7 @@ a {
     left: 0;
     width: 30%;
     height: 50%;
-    background-image: url('../images/background1.jpg');
+    background-image: url('images/background1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -680,7 +680,7 @@ a {
   z-index: 2;
   white-space: nowrap;
   opacity: 1; /* 可调，增强沉浸感 */
-  cursor: url('../images/cursor-arrow.png') 16 16, pointer;
+  cursor: url('images/cursor-arrow.png') 16 16, pointer;
 }
 
 /* ====== 动效：沿用之前 animate-on-scroll 规则，但稍做延迟区分 ====== */
