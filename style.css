@@ -154,7 +154,7 @@ a {
     max-width: 1400px;
     margin: 0 auto;
     font-family: 'Georgia', serif;
-    font-size: 3.8em;
+    font-size: clamp(2em, 5vw, 3.8em);
     line-height: 1.5;
     color: #333;
     text-align: center;
@@ -784,4 +784,107 @@ a {
 .footer-bottom-left,
 .footer-bottom-right {
   margin-top: 5px;
+}
+
+
+/* ========== 响应式优化 ========== */
+
+/* 屏幕宽度小于 1024px（平板） */
+@media (max-width: 1024px) {
+  .highlight-wrapper,
+  .chef-wrapper,
+  .split-block-wrapper,
+  .footer-columns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .highlight-text,
+  .highlight-image,
+  .chef-left,
+  .chef-right,
+  .footer-column {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .highlight-image img,
+  .chef-left .chef-photo {
+    width: 90%;
+    margin: 0 auto;
+    transform: none;
+  }
+
+  .highlight-image img {
+    margin-right: 0;
+  }
+}
+
+/* 屏幕宽度小于 768px（手机） */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 100vh;
+  }
+
+  .hero-text-overlay h1,
+  .hero-text-overlay h2,
+  .highlight-heading,
+  .section-title,
+  .split-title,
+  .experience-title {
+    font-size: 2.2em;
+  }
+
+  .highlight-text p,
+  .section-text,
+  .split-description,
+  .main-text-block {
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+
+  .btn-menu,
+  .split-button,
+  .btn-prenota {
+    font-size: 0.9em;
+    padding: 10px 16px;
+  }
+
+  .icon-marquee-track {
+    gap: 30px;
+  }
+
+  .marquee-icon {
+    height: 80px;
+  }
+
+  .footer-columns {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .footer-column {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-bottom-left,
+  .footer-bottom-right {
+    margin-top: 10px;
+  }
+
+  .experience-overlay-global {
+    font-size: 12vw;
+    line-height: 1.1;
+    white-space: normal;
+    text-align: center;
+  }
 }
