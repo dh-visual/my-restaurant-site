@@ -423,6 +423,21 @@ a {
   pointer-events: none;
 }
 
+.experience-section::before {
+  content: "";
+  position: absolute;
+  top: 30px;               /* 距离顶部的距离 */
+  left: 10px;              /* 距离左边的距离 */
+  width: 500px;            /* 图片宽度，可调整 */
+  height: 500px;           /* 图片高度，可调整 */
+  background-image: url('images/bamboo.png'); /* 路径确保正确 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.15;            /* 设置透明度，确保装饰性 */
+  pointer-events: none;    /* 不影响鼠标交互 */
+  z-index: 1;              /* 放在文字下面 */
+}
+
 @keyframes marquee-scroll {
   0% {
     transform: translateX(0);
