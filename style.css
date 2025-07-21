@@ -1004,4 +1004,14 @@ a {
     padding: 8px 16px;
   }
 }
+
+@media (max-width: 768px) {
+  .experience-section::before {
+    width: 140px;   /* 移动端的宽度 */
+    height: 140px;  /* 移动端的高度 */
+    top: 30px;      /* 位置也可相应下调 */
+    left: 20px;
+    opacity: 0.12;  /* 如果觉得太重也可以降低透明度 */
+  }
+}
 }
