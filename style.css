@@ -17,6 +17,7 @@ body {
     color: #333;
     overflow-x: hidden;
     background-color: #F7F7F7;
+    position: relative; /* 新增这一行 */
 }
 
 a {
@@ -39,10 +40,24 @@ a {
     color: #fff;
 }
 
+/* MENU 页面专用：页面加载时导航栏默认黑色文字 */
+body.dark-navbar .main-header {
+    color: #333;
+}
+
+body.dark-navbar .btn-prenota {
+    border-color: #333;
+}
+
+
 .main-header.scrolled {
     background-color: #F7F7F7;
-    color: #333;
+    color: #777;
     padding: 10px 5px;
+}
+.main-header.scrolled .navbar-left,
+.main-header.scrolled .btn-prenota {
+  color: #777;
 }
 
 .navbar {
@@ -60,6 +75,13 @@ a {
     font-size: 1.1em;
     letter-spacing: 1px;
     text-transform: uppercase;
+}
+.navbar-left {
+  padding-left: 2vw;   /* 原来没有 padding，现在向右推 */
+}
+
+.navbar-right {
+  padding-right: 2vw;  /* 原来没有 padding，现在向左推 */
 }
 
 .navbar-left {
@@ -81,11 +103,16 @@ a {
 }
 
 .btn-prenota {
-    border: 1px solid currentColor;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;                 /* ✅ 取消边框 */
+    background: none;             /* ✅ 去除背景 */
+    padding: 0;                   /* ✅ 去除内边距 */
+    font-size: 1.1em;             /* ✅ 保持与左侧文字一致 */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: inherit;               /* ✅ 跟随父元素颜色（白或黑） */
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 .btn-prenota:hover {
@@ -316,7 +343,7 @@ a {
 
 .highlight-section {
   background-color: #f7f7f7;
-  padding: 20px 8vw 100px 8vw;
+  padding: 10px 8vw 100px 8vw;
 }
 
 .highlight-wrapper {
@@ -338,6 +365,23 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.highlight-section {
+  position: relative;
+  overflow: visible;
+}
+
+.highlight-section::before {
+  content: "";
+  position: absolute;
+  top: 0px; /* 向上溢出 */
+  left: -80px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .highlight-heading {
@@ -379,13 +423,13 @@ a {
   justify-content: center;
   margin-top: 60px;
   padding: 12px 20px;
-  font-size: 1.05em;     /* 略大一点点，避免按钮太小 */
-  font-weight: normal;   /* 如需与下方按钮一致 */
+  font-size: 0.9em;     /* 略大一点点，避免按钮太小 */
+  font-weight: bold;   /* 如需与下方按钮一致 */
   font-family: Arial, sans-serif;
-  color: #fff;
-  background-color: #C08C54;
-  border: none;
-  border-radius: 6px;
+  color: #333;
+  background-color: transparent;
+  border: 2px solid #c08c54;
+  border-radius: 8px;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
@@ -395,16 +439,17 @@ a {
 }
 
 .btn-menu:hover {
-  background-color: #EBCB9B;
+  background-color: #c08c54;
+  color: #fff;
 }
 
 .icon-marquee {
   width: 100%;
   overflow: hidden;
   background-color: #f7f7f7;
-  padding-top: 80px;      /* ↑ 增加上内边距 */
-  padding-bottom: 30px;   /* ↑ 增加下内边距 */
-  margin-bottom: 105px;   /* 保持与下一个内容之间的外边距 */
+  padding-top: 0px;      /* ↑ 增加上内边距 */
+  padding-bottom: 40px;   /* ↑ 增加下内边距 */
+  margin-bottom: 40px;   /* 保持与下一个内容之间的外边距 */
   box-sizing: border-box;
 }
 
@@ -421,21 +466,6 @@ a {
   width: auto;
   user-select: none;
   pointer-events: none;
-}
-
-.experience-section::before {
-  content: "";
-  position: absolute;
-  top: 30px;               /* 距离顶部的距离 */
-  left: 10px;              /* 距离左边的距离 */
-  width: 500px;            /* 图片宽度，可调整 */
-  height: 500px;           /* 图片高度，可调整 */
-  background-image: url('images/bamboo.png'); /* 路径确保正确 */
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.15;            /* 设置透明度，确保装饰性 */
-  pointer-events: none;    /* 不影响鼠标交互 */
-  z-index: 1;              /* 放在文字下面 */
 }
 
 @keyframes marquee-scroll {
@@ -552,13 +582,13 @@ a {
   position: relative;
   flex: 1 1 50%;
   overflow: hidden;
-  min-height: 60vh;
+  aspect-ratio: 1 / 1; /* 👈 改成正方形 */
 }
 
 .split-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* 👈 改成 contain，就不会被裁剪了 */
   display: block;
   filter: brightness(0.7);
 }
@@ -648,7 +678,7 @@ a {
 /* ===== Esperienza / Prenota ===== */
 .experience-section {
   background-color: #F7F7F7;   /* 与页面其它段落保持呼吸感 */
-  padding: 170px 6vw 205px 6vw;          /* 上下留白，左右自适应 */
+  padding: 70px 6vw 205px 6vw;          /* 上下留白，左右自适应 */
   text-align: center;
   position: relative;
 }
@@ -803,7 +833,240 @@ a {
   margin-top: 5px;
 }
 
+.bamboo-bg-global {
+  position: absolute;
+  top: -100px;             /* 🎯你可以调为 0 或更小，比如 -100px */
+  left: -80px;
+  opacity: 0.08;
+  z-index: -1;            /* 这行非常重要：放在内容层之下 */
+  pointer-events: none;
+}
 
+.experience-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  background-image: url('images/bamboo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+}
+  .split-overlay {
+    padding: 20px;
+    justify-content: center;
+  }
+
+  .split-title {
+    font-size: 2em;
+  }
+
+  .split-button {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+/* MENU 页面顶部标题样式：靠左靠上排列 */
+.menu-header-section {
+  width: 100%;
+  background-color: #f7f7f7;
+  padding: 80px 6vw 100px;
+  text-align: center;
+}
+
+.menu-header-container {
+  display: flex;
+  justify-content: center;       /* 居中 */
+  align-items: center;
+  gap: 40px;                     /* “MENU”和图标之间的间距 */
+  flex-wrap: nowrap;
+}
+
+.menu-title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(5em, 11vw, 9.5em);
+  font-weight: 500;
+  color: #C08C54;
+  letter-spacing: 4px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.menu-icon-right {
+  width: 140px;
+  height: auto;
+  display: block;
+}
+.menu-hero-section {
+  width: 100%;
+  background-color: #f7f7f7;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-hero-image-wrapper {
+  width: calc(100% - 12vw);   /* 和导航栏内容区域等宽 */
+  max-width: 1400px;
+  margin: 0 auto;              /* 居中 */
+  overflow: hidden;
+  padding: 40px 0 01px;        /* 去掉左右 padding */
+}
+
+.menu-hero-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px; /* 你也可以移除这行，让图片更纯粹 */
+  object-fit: cover;
+}
+.menu-intro-section {
+  background-color: #f7f7f7;
+  padding: 100px 6vw 100px;
+  padding-top: 80px;
+  padding-bottom: 140px;
+  text-align: center;
+}
+
+.menu-intro-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: 'Georgia', serif;
+  font-size: clamp(2em, 5vw, 3.8em);
+  line-height: 1.5;
+  color: #333;
+  text-align: center;
+}
+
+.menu-intro-container p {
+  margin-bottom: 60px;
+}
+
+.menu-intro-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: 'Georgia', serif;
+  font-size: clamp(2em, 5vw, 3.8em);
+  line-height: 1.5;
+  color: #333;
+  text-align: center;
+}
+
+/* 个别图标样式：根据你上传的图片命名 */
+.icon-pink-roll {
+  background-image: url('icon-sushi-menu.png');
+}
+
+.icon-green-leaf {
+  background-image: url('icon-doufu-menu.png');
+}
+.icon-sushi-menu {
+  background-image: url('images/icon-sushi-menu.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 1.6em;
+  height: 1.6em;
+  vertical-align: middle;
+  margin: 0 6px;
+}
+
+.icon-doufu-menu {
+  background-image: url('images/icon-doufu-menu.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 1.6em;
+  height: 1.6em;
+  vertical-align: middle;
+  margin: 0 6px;
+}
+.gallery-scroll-section {
+  background-color: #f7f7f7;
+  padding: 0; /* 去掉上下间距 */
+  overflow: hidden;
+  height: calc(100vh - 50px);
+}
+
+.gallery-scroll-wrapper { 
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 30px;
+  padding-bottom: 10px;
+  height: 100%;
+}
+
+.gallery-scroll-wrapper img {
+  height: 100%;
+  width: auto;
+  object-fit: contain; /* ← 不裁剪不拉伸 */
+  border-radius: 0;
+}
+
+.gallery-item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.\31 68-logo {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+.gallery-scroll-wrapper::-webkit-scrollbar {
+  height: 10px;
+}
+.gallery-scroll-wrapper::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.gallery-scroll-wrapper::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.gallery-image {
+  flex: 0 0 auto;
+  width: 280px;
+  height: auto;
+  border-radius: 0;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.03);
+}
+.btn-discover-menu {
+  display: inline-block;
+  padding: 30px 30px;
+  border: 2px solid #c08c54; /* 米棕色边框 */
+  background-color: transparent;
+  color: #333;
+  font-size: 1.2rem;
+  font-family: Arial, sans-serif;  /* 修改字体为 Arial */
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-discover-menu:hover {
+  background-color: #c08c54;
+  color: #fff;
+  cursor: pointer;
+}
 /* ========== 响应式优化 ========== */
 
 /* 屏幕宽度小于 1024px（平板） */
@@ -920,36 +1183,13 @@ a {
     margin-right: auto;
   }
 }
-@media (max-width: 768px) {
-  .highlight-wrapper {
-    flex-direction: column-reverse; /* 让图片出现在上方 */
-  }
 
-  .highlight-image {
-    order: -1;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-  }
-
-  .highlight-image img {
-    width: 90%;
-    max-width: 420px;
-    margin: 0 auto;
-    border-radius: 10px;
-  }
-}
 @media (max-width: 768px) {
   .split-block {
     min-height: auto;
   }
-
-  .split-image {
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
 }
+
 
 @media (max-width: 768px) {
   .placeholder-content {
@@ -957,15 +1197,16 @@ a {
   }
 
   .main-text-block {
-    font-size: 1.35em;     /* 原来是 clamp(2em, 5vw, 3.8em)，这里直接固定略大值 */
+    font-size: 1.8em;     /* 原来是 clamp(2em, 5vw, 3.8em)，这里直接固定略大值 */
     line-height: 1.6;      /* 行间距略增加 */
     padding: 0 10px;       /* 额外微调内边距 */
   }
 }
 
   .main-text-block span[class^="icon-"] {
-    width: 1.8em;
-    height: 1.8em;
+    width: 2.0em;
+    height: 2.0em;
+    margin: 0 6px;          /* 图标左右间距略放宽 */
   }
   @media (max-width: 768px) {
   .highlight-text {
@@ -979,39 +1220,109 @@ a {
   }
 }
 @media (max-width: 768px) {
+  .experience-section::before {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
   .split-block {
     min-height: auto; /* 去掉默认高度 */
   }
-
-  .split-image {
-    width: 100vw;            /* 图片宽度铺满屏幕 */
-    height: 100vw;           /* 高度 = 宽度，变成正方形 */
-    object-fit: cover;       /* 保持图片填满区域，不压缩变形 */
-    display: block;
   }
-
-  .split-overlay {
-    padding: 20px;
-    justify-content: center;
+}
+/* 增大首页底部哲学/地点图标标题按钮大小，仅桌面端 */
+@media (min-width: 1025px) {
+  .split-icon {
+    width: 120px;
   }
 
   .split-title {
-    font-size: 2em;
+    font-size: 4.0em;
   }
 
   .split-button {
-    font-size: 0.9em;
-    padding: 8px 16px;
+    font-size: 1.05em;
+    padding: 14px 26px;
+  }
+}
+@media (max-width: 768px) {
+  .highlight-wrapper {
+    flex-direction: column; /* ✅ 手机端变为上下排列 */
+  }
+
+  .highlight-text {
+    order: 1; /* 保持文字区域靠前 */
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .highlight-text .highlight-heading {
+    margin-bottom: 20px;
+  }
+
+  .highlight-image {
+    order: 2; /* ✅ 把图片从右侧调到标题下方 */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .highlight-image img {
+    width: 90%;
+    max-width: 420px;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+
+  .highlight-text p {
+    order: 3;
+  }
+
+  .btn-menu {
+    order: 4;
+    margin-top: 30px;
+  }
+}
+@media (max-width: 768px) {
+  .highlight-text .highlight-heading {
+    margin-top: 0px; /* ✅ 原来可能是较大值，这里强制减小 */
+    margin-bottom: 20px; /* 已有的，不动 */
+  }
+}
+@media (max-width: 768px) {
+  .experience-section {
+    padding-top: 60px;
+    padding-bottom: 0px;
+  }
+
+  .experience-title {
+    margin-top: 0; /* 如仍然觉得太近，可改为10px~20px */
+  }
+
+  .experience-image-wrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .experience-overlay-global {
+    bottom: 800px; /* 或者更小的值，微调它离底部的距离 */
   }
 }
 
 @media (max-width: 768px) {
   .experience-section::before {
-    width: 220px;   /* 移动端的宽度 */
-    height: 220px;  /* 移动端的高度 */
-    top: 30px;      /* 位置也可相应下调 */
-    left: 20px;
-    opacity: 0.12;  /* 如果觉得太重也可以降低透明度 */
+    display: none !important;
+    content: none !important;
+    background-image: none !important;
   }
 }
+@media (max-width: 768px) {
+  .icon-marquee {
+    padding-top: 0px;   /* 原来是 40px，可改为 10px 或 0px */
+    margin-top:-65px;    /* 如还需要，可额外减少外间距 */
+  }
 }
