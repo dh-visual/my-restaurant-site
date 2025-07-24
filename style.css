@@ -1449,3 +1449,32 @@ body.dark-navbar .btn-prenota {
     margin-right: 0px;  /* 原来是 10px，移动端更紧凑 */
   }
 }
+@media (max-width: 768px) {
+  .menu-icon-right {
+    width: 60px;  /* 原图为140px，移动端可适当缩小 */
+  }
+}
+@media (max-width: 768px) {
+  .chef-left .chef-photo,
+  .chef-dish {
+    width: 90vw;
+    max-width: 100%;
+    margin: 0 auto;
+    transform: none;
+  }
+}
+@media (max-width: 768px) {
+  .full-width-banner {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}
+@media (max-width: 400px) {
+  .menu-icon-right {
+    display: none;
+  }
+
+  .menu-header-container {
+    justify-content: center; /* 保证标题居中 */
+  }
+}
