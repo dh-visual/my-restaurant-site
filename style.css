@@ -489,8 +489,8 @@ body.dark-navbar .btn-prenota {
 }
 
 .chef-section {
-  background-color: #1B1414;
-  color: #fff;
+  background-color: #F7F7F7;
+  color: #333;
   padding: 100px 6vw; /* 增加左右留白 */
 }
 
@@ -541,13 +541,13 @@ body.dark-navbar .btn-prenota {
   font-family: 'Georgia', serif; /* 与上面一致 */
   line-height: 1.2;
   margin-bottom: 30px;
-  color: #fff;
+  color: #333;
 }
 
 .section-text {
   font-size: 1.25em;            /* 段落更大 */
   line-height: 1.9;
-  color: #fff;
+  color: #333;
   margin-bottom: 40px;          /* 增加段落与图片间距 */
 }
 
@@ -1090,6 +1090,25 @@ body.dark-navbar .btn-prenota {
   font-weight: bold;
   user-select: none;
 }
+
+/* Filosofia 页面专用间距优化 */
+.gallery-scroll-section {
+  padding-bottom: 80px;
+}
+
+.chef-section {
+  padding: 140px 6vw;
+}
+
+.full-width-banner {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.experience-section {
+  padding: 100px 6vw 205px 6vw;
+}
+
 /* ========== 响应式优化 ========== */
 
 /* 屏幕宽度小于 1024px（平板） */
