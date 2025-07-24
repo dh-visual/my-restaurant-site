@@ -93,7 +93,7 @@ body.dark-navbar .btn-prenota {
 }
 
 .menu-icon {
-    margin-right: 10px;
+    margin-right: 6px;
 }
 
 .navbar-center .sato-logo {
@@ -1067,6 +1067,29 @@ body.dark-navbar .btn-prenota {
   color: #fff;
   cursor: pointer;
 }
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color:#C08C54; /* ✅ 原来是 rgba 半透明，改为不透明米棕色 */
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursor-icon {
+  font-size: 1.5em;
+  color: #fff;       /* ✅ 改为白色字，提升对比度 */
+  font-weight: bold;
+  user-select: none;
+}
 /* ========== 响应式优化 ========== */
 
 /* 屏幕宽度小于 1024px（平板） */
@@ -1100,6 +1123,32 @@ body.dark-navbar .btn-prenota {
   .highlight-image img {
     margin-right: 0;
   }
+}
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  display: none;
+  width: 120px;
+  height: 120px;
+}
+.custom-cursor img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.custom-cursor.small .cursor-core {
+  content: url('images/cursor-circle-small.png');
+  width: 60px;
+  height: 60px;
+}
+.custom-cursor.small .cursor-arrows {
+  content: url('images/cursor-arrows-small.png');
 }
 
 /* 屏幕宽度小于 768px（手机） */
@@ -1324,5 +1373,60 @@ body.dark-navbar .btn-prenota {
   .icon-marquee {
     padding-top: 0px;   /* 原来是 40px，可改为 10px 或 0px */
     margin-top:-65px;    /* 如还需要，可额外减少外间距 */
+  }
+}
+/* ===== MENU 页面响应式专用样式 ===== */
+@media (max-width: 768px) {
+  .menu-title {
+    font-size: 3.4em;
+  }
+
+  .menu-icon-right {
+    width: 60px;
+  }
+
+  .menu-header-section {
+    padding: 40px 6vw 60px;
+  }
+
+  .menu-intro-container {
+    font-size: 1.4em;
+    padding: 0 20px;
+  }
+
+  .menu-header-container {
+    gap: 10px;         /* ✅ 缩小文字与图标之间的间距 */
+  }
+
+  .btn-discover-menu {
+    font-size: 1em;
+    padding: 16px 20px;
+  }
+
+  .gallery-scroll-section {
+    height: 50vh;
+  }
+
+  .gallery-image {
+    width: 200px;
+  }
+}
+@media (max-width: 768px) {
+  .menu-intro-container {
+    font-size: 1.8em;      /* 与首页一致 */
+    line-height: 1.6;
+    padding: 0 10px;       /* 额外微调边距 */
+  }
+}
+@media (max-width: 768px) {
+  .btn-discover-menu {
+    font-size:0.7em;       /* ✅ 继承自父级字体大小 */
+    padding: 14px 22px;
+    border-width: 1.5px;
+  }
+}
+@media (max-width: 768px) {
+  .menu-icon {
+    margin-right: 0px;  /* 原来是 10px，移动端更紧凑 */
   }
 }

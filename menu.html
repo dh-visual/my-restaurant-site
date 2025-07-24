@@ -15,7 +15,7 @@
     <nav class="navbar">
       <div class="navbar-left">
         <i class="fas fa-bars menu-icon"></i>
-        <span>MENU</span>
+        <span class="btn-prenota">MENU</span> <!-- ✅ 给它也加上相同的类 -->
       </div>
       <div class="navbar-center">
         <a href="index.html" class="logo-link">
@@ -119,5 +119,57 @@
   </div>
 </div>
 
+<div class="custom-cursor">
+  <img src="images/cursor-circle-large.png" class="cursor-core" />
+  <img src="images/cursor-arrows-large.png" class="cursor-arrows" />
+</div>
+
 <script src="script.js"></script>
 </body>
+
+<script>
+const gallery = document.querySelector('.gallery-scroll-wrapper');
+const customCursor = document.querySelector('.custom-cursor');
+const cursorCore = customCursor.querySelector('.cursor-core');
+const cursorArrows = customCursor.querySelector('.cursor-arrows');
+
+let isDragging = false;
+let startX, scrollLeft;
+
+function updateCursorPosition(e) {
+  customCursor.style.left = e.clientX + 'px';
+  customCursor.style.top = e.clientY + 'px';
+
+  const offset = isDragging ? 10 : 4;
+  const direction = e.movementX > 0 ? 1 : -1;
+  cursorArrows.style.transform = `translate(-50%, -50%) translateX(${direction * offset}px)`;
+}
+
+gallery.addEventListener('mouseenter', () => {
+  console.log('鼠标进入画廊区域');  // 添加这一行
+  customCursor.style.display = 'block';
+});
+
+gallery.addEventListener('mouseleave', () => {
+  customCursor.style.display = 'none';
+});
+
+gallery.addEventListener('mousemove', (e) => {
+  updateCursorPosition(e);
+  if (!isDragging) return;
+  const x = e.pageX - gallery.offsetLeft;
+  const walk = (x - startX) * 1.5;
+  gallery.scrollLeft = scrollLeft - walk;
+});
+
+gallery.addEventListener('mousedown', (event) => {
+  isDragging = true;
+  customCursor.classList.add('small');
+  startX = event.pageX - gallery.offsetLeft;
+  scrollLeft = gallery.scrollLeft;
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+  customCursor.classList.remove('small');
+});
