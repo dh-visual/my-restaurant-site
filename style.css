@@ -182,7 +182,7 @@ body.dark-navbar .btn-prenota {
     max-width: 1400px;
     margin: 0 auto;
     font-family: 'Georgia', serif;
-    font-size: clamp(2em, 5vw, 3.8em);
+    font-size: clamp(1.8em, 4vw, 3.0em);
     line-height: 1.5;
     color: #333;
     text-align: center;
@@ -210,6 +210,7 @@ body.dark-navbar .btn-prenota {
 
 .main-text-block p {
     margin-bottom: 0.5em;
+    font-size: clamp(1.3em, 1.5vw, 2.4em);
 }
 
 .main-text-block span[class^="icon-"] {
@@ -346,29 +347,6 @@ body.dark-navbar .btn-prenota {
   padding: 10px 8vw 100px 8vw;
 }
 
-.highlight-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 0;
-  padding-right: 0;
-  max-width: 100%;
-}
-
-.highlight-text {
-  flex: 0 0 45%;
-  font-family: 'Georgia', serif;
-  color: #333;
-  padding-left: 1vw;   /* 新增左内边距 */
-  padding-right: 5vw;  /* 减少右内边距 */
-  padding-bottom: 10px; /* 新增，为按钮腾出空间 */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  position: relative;
-  z-index: 1;
-}
-
 .highlight-section {
   position: relative;
   overflow: visible;
@@ -398,24 +376,6 @@ body.dark-navbar .btn-prenota {
   font-family: Arial, sans-serif; 
 }
 
-.highlight-image {
-  flex: 0 0 50%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 0;
-  position: relative;
-  overflow: visible;
-}
-
-.highlight-image img {
-  width: 70vw; /* 占满整个视口宽度 */
-  max-width: none;
-  height: auto;
-  object-fit: cover;
-  margin-right: calc(-29vw + 50%); /* 让右边对齐，同时左边抵达中线 */
-  border-radius: 6px;
-}
 
 .btn-menu {
   display: inline-flex; /* 精准包裹内容 */
@@ -944,7 +904,7 @@ body.dark-navbar .btn-prenota {
 }
 
 .menu-intro-container p {
-  margin-bottom: 60px;
+  margin-bottom: 100px;
 }
 
 .menu-intro-container {
@@ -1002,6 +962,7 @@ body.dark-navbar .btn-prenota {
   gap: 30px;
   padding-bottom: 10px;
   height: 100%;
+  width: 100%; /* 👈 确保可滚动 */
 }
 
 .gallery-scroll-wrapper img {
@@ -1041,12 +1002,9 @@ body.dark-navbar .btn-prenota {
   height: auto;
   border-radius: 0;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: none;
 }
 
-.gallery-image:hover {
-  transform: scale(1.03);
-}
 .btn-discover-menu {
   display: inline-block;
   padding: 30px 30px;
@@ -1060,6 +1018,7 @@ body.dark-navbar .btn-prenota {
   text-decoration: none;
   border-radius: 8px;
   transition: all 0.3s ease;
+  margin-top: 50px !important;  /* 🔥 添加这一行 */
 }
 
 .btn-discover-menu:hover {
@@ -1084,13 +1043,6 @@ body.dark-navbar .btn-prenota {
   justify-content: center;
 }
 
-.cursor-icon {
-  font-size: 1.5em;
-  color: #fff;       /* ✅ 改为白色字，提升对比度 */
-  font-weight: bold;
-  user-select: none;
-}
-
 /* Filosofia 页面专用间距优化 */
 .gallery-scroll-section {
   padding-bottom: 80px;
@@ -1107,6 +1059,382 @@ body.dark-navbar .btn-prenota {
 
 .experience-section {
   padding: 100px 6vw 205px 6vw;
+}
+
+.icon-tempio {
+  background-image: url('images/icon-tempio.png');  /* 你可以替换为实际图标地址 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  vertical-align: middle;
+  margin: 0 6px;
+}
+
+.icon-pesce {
+  background-image: url('images/icon-pesce.png');  /* 你可以替换为实际图标地址 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 1.8em;
+  height: 1.8em;
+  vertical-align: middle;
+  margin: 0 6px;
+}
+
+.gallery-scroll-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 30px;
+  padding-bottom: 10px;
+  height: 100%;
+  width: 100%;
+  cursor: default;
+  scrollbar-width: thin; /* Firefox 显示纤细滑块 */
+}
+
+/* Chrome / Safari 滚动条美化 */
+.gallery-scroll-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.gallery-scroll-wrapper::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 4px;
+}
+.gallery-scroll-wrapper::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.gallery-image {
+  user-select: none;
+  pointer-events: auto;
+}
+
+.gallery-scroll-wrapper {
+  overflow-x: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.gallery-scroll-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* 控制整个图文区域最大宽度并居中 */
+.highlight-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  gap: 40px;
+}
+
+.menu-intro-section {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-intro-container {
+  max-width: 860px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* 左侧图片区域，占 40% */
+.highlight-image {
+  flex: 0 0 40%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.highlight-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.highlight-wrapper .menu-intro-container {
+  flex: 0 0 60%;
+}
+
+.menu-intro-paragraph {
+  font-family: 'Georgia', serif; /* 添加这一行来改变字体 */
+  font-size: 3.6rem;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.main-intro-text {
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: 'Georgia', serif;
+  font-size: clamp(2em, 5vw, 3.8em);
+  line-height: 1.5;
+  color: #333;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.highlight-section.location-page .highlight-text {
+  flex: 0 0 65%;
+  max-width: 65%;
+}
+.highlight-section.location-page .highlight-image {
+  flex: 0 0 35%;
+  max-width: 35%;
+}
+
+.location-page .menu-hero-section {
+  margin-bottom: 100px; /* ✅ 自定义间距 */
+}
+
+.location-page .highlight-text {
+  padding-left: 6vw;
+  padding-right: 0vw;
+}
+
+.highlight-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  padding: 0;
+}
+
+.highlight-text {
+  flex: 0 0 45%;
+  font-family: 'Georgia', serif;
+  color: #333;
+  padding-left: 0vw;
+  padding-right: 5vw;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.highlight-heading {
+  font-size: 3.8em;
+  font-weight: 500;
+  margin-bottom: 60px;
+  line-height: 1.2;
+}
+
+.highlight-text p {
+  font-size: 1.25em;
+  line-height: 1.9;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.highlight-image {
+  flex: 0 0 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 0;
+  position: relative;
+  overflow: visible;
+}
+
+.highlight-image img {
+  width: 70vw;
+  max-width: none;
+  height: auto;
+  object-fit: cover;
+  margin-right: calc(-29vw + 50%);
+  border-radius: 6px;
+}
+
+.btn-menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  padding: 12px 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: transparent;
+  border: 2px solid #c08c54;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.btn-menu:hover {
+  background-color: #c08c54;
+  color: #fff;
+}
+
+
+/* ✅ LOCATION 页面专属左右分栏样式 */
+.location-highlight-section {
+  background-color: #F7F7F7;
+  padding: 100px 8vw;
+}
+
+.location-highlight-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90vw;
+  margin: 0 auto;
+  padding: 0 10px;
+  gap: 40px;
+}
+
+.location-highlight-image {
+  flex: 0 0 40%;
+}
+
+.location-highlight-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+}
+
+.location-highlight-text {
+  flex: 0 0 60%;
+  font-size: 1.25em;
+  line-height: 1.8;
+  font-family: Arial, sans-serif;
+  color: #333;
+  padding-right: 0px;
+}
+
+.location-page .location-highlight-text .experience-title {
+  font-size: 3.1em; /* 或根据你需求选择 1.8em、2.2em 等 */
+  text-align: left; /* 可选，如果你不希望它居中 */
+}
+
+.contatti-section {
+  background-color: F7F7F7;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.contatti-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  /* ✅ 原本是 flex-start，现在垂直居中 */
+  gap: 60px;
+  max-width: none;
+  margin: 0 auto;
+  position: relative;
+  margin-left: 80px;
+  margin-right: 130px;
+  padding: 0;
+}
+
+.contatti-left {
+  flex: 0 0 43%;
+  font-family: 'Georgia', serif;
+}
+
+.contatti-title {
+  /* 原有样式 */
+  font-size: 6em;
+  font-weight: 500;
+  font-family: 'Georgia', serif;
+  line-height: 1.2;
+  color: #C08C54;
+  margin-bottom: 70px;
+}
+
+.contatti-info {
+  font-family: 'Georgia', serif;
+  font-size: 1.2em;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.contatti-row {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0;
+  padding-bottom: 50px;
+  margin-bottom: 15px;
+  border-top: none;
+  border-bottom: none;
+  position: relative;
+}
+
+.contatti-row::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.5px;
+  background-color: #e0e0e0;  /* 可改为 #e0e0e0 更浅 */
+}
+
+.contatti-label {
+  color: #767C8F;
+  font-size: 1.1em;
+}
+
+.contatti-value {
+  font-weight: 400;
+  font-size: 1.1em;
+  text-align: right;
+}
+
+.contatti-value a {
+  text-decoration: underline;
+  color: #333;
+}
+
+.contatti-right {
+  flex: 0 0 45%;
+  position: relative;
+}
+
+.contatti-right img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.bamboo-overlay {
+  position: absolute;
+  top: 20px;
+  left: -60px;
+  width: 200px;
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contatti-value a {
+  text-decoration: underline;
+  text-underline-offset: 6px;  /* ⬅ 增加一点距离 */
+  text-decoration-thickness: 1.1px; /* 可选，控制线条粗细 */
+}
+
+.arial-text {
+  font-family: Arial, sans-serif;
 }
 
 /* ========== 响应式优化 ========== */
@@ -1142,32 +1470,6 @@ body.dark-navbar .btn-prenota {
   .highlight-image img {
     margin-right: 0;
   }
-}
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  display: none;
-  width: 120px;
-  height: 120px;
-}
-.custom-cursor img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-.custom-cursor.small .cursor-core {
-  content: url('images/cursor-circle-small.png');
-  width: 60px;
-  height: 60px;
-}
-.custom-cursor.small .cursor-arrows {
-  content: url('images/cursor-arrows-small.png');
 }
 
 /* 屏幕宽度小于 768px（手机） */
@@ -1476,5 +1778,97 @@ body.dark-navbar .btn-prenota {
 
   .menu-header-container {
     justify-content: center; /* 保证标题居中 */
+  }
+}
+
+@media (max-width: 768px) {
+  .filosofia-page .gallery-scroll-section {
+    padding-top: 0px;     /* 🔧 你可以自定义这个数值 */
+    padding-bottom: 0px;  /* 🔧 原来是 80px，你也可以改为更紧凑或更宽松 */
+  }
+}
+@media (max-width: 768px) {
+  .filosofia-page .full-width-banner {
+    display: none;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+  }
+
+  /* 上下段落的补偿调整（可选） */
+  .filosofia-page .experience-section {
+    margin-top: 0px; /* 🔧 根据你隐藏的图像高度微调，默认是100px以上 */
+  }
+}
+@media (max-width: 768px) {
+  .filosofia-page .gallery-scroll-section {
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
+
+  .filosofia-page .chef-section {
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
+
+  .filosofia-page .experience-section {
+    margin-top: 0;
+    padding-top: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .location-page .location-highlight-text .experience-title {
+    font-size: 1.7em;
+    line-height: 1.5;
+    text-align: left;
+  }
+}
+/* 默认状态下只显示桌面图 */
+.desktop-image {
+  display: block;
+}
+.mobile-image {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  /* 移动端改为上下分栏 */
+  .location-highlight-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* 移动端使用另一张图片 */
+  .desktop-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* 可选：右栏文字在手机上居中显示 */
+  .location-highlight-text {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .location-page .location-highlight-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .location-page .location-highlight-wrapper {
+    gap: 20px; /* 控制图文之间的间距 */
+    padding: 0 20px;
+  }
+
+  .location-page .gallery-scroll-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .location-page .experience-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 }
