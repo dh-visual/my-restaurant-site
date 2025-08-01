@@ -12,17 +12,17 @@
   <!-- 导航栏：复用 -->
   <header class="main-header">
     <nav class="navbar">
-      <div class="navbar-left">
-        <i class="fas fa-bars menu-icon"></i>
-        <span class="btn-prenota">MENU</span>
-      </div>
+      <div class="navbar-left clickable-area menu-toggle" id="menuToggleContainer">
+  <img src="images/hamburger-icon-white.png" alt="Menu Icon" class="hamburger-icon" id="hamburgerIcon" />
+  <span class="btn-prenota menu-text">MENU</span>
+</div>
       <div class="navbar-center">
         <a href="index.html" class="logo-link">
-          <img src="images/168_logo.png" alt="168 Logo" class="168-logo">
+          <img src="images/168_logo.png" alt="Logo" class="logo" />
         </a>
       </div>
       <div class="navbar-right">
-        <a href="#" class="btn-prenota">PRENOTA</a>
+        <a href="contatti.html" class="btn-prenota">PRENOTA</a>
       </div>
     </nav>
   </header>
@@ -33,7 +33,7 @@
     <section class="menu-header-section">
       <div class="menu-header-container">
         <h1 class="menu-title">LOCATION</h1>
-        <img src="images/icon-filosofia.png" alt="Decorazione" class="menu-icon-right">
+        <img src="images/icon-location.png" alt="Decorazione" class="menu-icon-right">
       </div>
     </section>
 
@@ -50,11 +50,12 @@
     <div class="location-highlight-image">
   <!-- 桌面端图片 -->
   <img src="images/your-custom-shape.png" alt="Decorative Shape" class="desktop-image">
+  <!-- 右下角icon -->
+  <img src="images/flower-right-corner.png" alt="Icona decorativa" class="corner-icon">
     </div>
     <div class="location-highlight-text">
         <p class="experience-title">
-        Un design raffinato e spazi polifunzionali, dai tavoli tranquilli e riservati alle ampie sale ideali per eventi indimenticabili.
-      </p>
+        Un ristorante spazioso nel cuore di Milano, con un’ampia sala per l’All You Can Eat, eleganti tavoli riservati, salette private e sala banchetti fino a 30 tavoli. Spazi per ogni occasione, dalla cena intima alla festa più grande.</p>
       </div>
     </div>
   </div>
@@ -85,7 +86,7 @@
   </div>
 
   <!-- PRENOTA 浮于中央 -->
-  <a href="index.html" class="experience-overlay-global">PRENOTA</a>
+  <a href="contatti.html" class="experience-overlay-global">PRENOTA</a>
 </section>
 
 <!-- 页脚信息 -->
@@ -104,8 +105,10 @@
       <p>Tel: <a href="tel:+390297381672">+39 02 9738 1672</a></p>
     </div>
     <div class="footer-column icon-only">
-      <img src="images/insicon.png" alt="Icona decorativa">
-    </div>
+  <a href="https://www.instagram.com/168_chinese_township/" target="_blank" rel="noopener noreferrer">
+    <img src="images/insicon.png" alt="Instagram Icon" />
+  </a>
+</div>
   </div>
 </footer>
 
@@ -118,6 +121,13 @@
   <div class="footer-bottom-right">
     P.IVA: 12754350960
   </div>
+</div>
+
+<script src="script.js"></script>
+
+<div class="custom-cursor">
+  <img src="images/cursor-circle-large.png" class="cursor-core" />
+  <img src="images/cursor-arrows-large.png" class="cursor-arrows" />
 </div>
 
 <script src="script.js"></script>
