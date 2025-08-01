@@ -508,16 +508,16 @@ body.dark-navbar .btn-prenota {
 
 .section-title {
   font-size: 3.8em;              /* 与 .highlight-heading 相同 */
-  font-weight: 500;              /* 相同粗细 */
-  font-family: 'Georgia', serif; /* 与上面一致 */
-  line-height: 1.2;
+  font-weight: normal;              /* 相同粗细 */
+  font-family: 'Georgia', sans-serif; /* 与上面一致 */
+  line-height: 1.4;
   margin-bottom: 30px;
   color: #333;
 }
 
 .section-text {
-  font-size: 1.25em;            /* 段落更大 */
-  line-height: 1.9;
+  font-size: 1.2em;            /* 段落更大 */
+  line-height: 1.7;
   color: #333;
   margin-bottom: 40px;          /* 增加段落与图片间距 */
 }
@@ -750,7 +750,7 @@ body.dark-navbar .btn-prenota {
 }
 
 .footer-column p {
-  font-size: 1.0em;
+  font-size: 1.2em;
   line-height: 1.7;
 }
 
@@ -1493,12 +1493,12 @@ body.dark-navbar .btn-prenota {
 }
 
 .contatti-location-title {
-  font-size: 3.9rem;
-  font-weight: normal;
+  font-size: 3.8em;
+  font-weight: 500;
+  font-family: 'Georgia', serif;
+  line-height: 1.2;
   color: #333;
   margin-bottom: 50px;
-  font-family: 'Georgia', serif; /* 与其他页面一致 */
-  line-height: 1.2; /* 默认可能是 1.4 或更大，改小一点 */
 }
 
 .highlight-green {
@@ -1633,6 +1633,15 @@ body.home-page.dark-navbar .menu-toggle:hover .menu-text {
   color: #C08C54;
 }
 
+.location-left {
+  text-align: left;
+}
+
+.footer-bottom {
+  display: none !important;
+  border-top: none !important;
+}
+
 /* ========== 响应式优化 ========== */
 
 /* 屏幕宽度小于 1024px（平板） */
@@ -1762,17 +1771,25 @@ body.home-page.dark-navbar .menu-toggle:hover .menu-text {
     padding: 60px 20px;  /* 缩小左右间距，原来是 50px */
   }
 
+@media (max-width: 768px) {
   .main-text-block {
-    font-size: 1.8em;     /* 原来是 clamp(2em, 5vw, 3.8em)，这里直接固定略大值 */
-    line-height: 1.6;      /* 行间距略增加 */
-    padding: 0 10px;       /* 额外微调内边距 */
+    font-size: 1.6em;       /* 字号缩小，原为1.8em */
+    line-height: 1.6;       /* 行距略放大 */
+    padding: 0 16px;        /* 左右留白 */
+    text-align: center;     /* 保持居中 */
   }
-}
+
+  .main-text-block p {
+    font-size: 1.2em;       /* 子段落进一步缩小字体 */
+    line-height: 1.6;
+  }
 
   .main-text-block span[class^="icon-"] {
-    width: 2.0em;
-    height: 2.0em;
-    margin: 0 6px;          /* 图标左右间距略放宽 */
+    width: 1.6em;           /* 图标大小缩小 */
+    height: 1.6em;
+    margin: 0 5px;
+  }
+}
   }
   @media (max-width: 768px) {
   .highlight-text {
@@ -2174,16 +2191,14 @@ body.home-page.dark-navbar .menu-toggle:hover .menu-text {
     left: 50%;
     transform: translateX(-50%);
   }
-  .main-header.scrolled {
-    padding-top: 30px !important;
-    padding-bottom: 30px !important;
-    color: inherit !important;
-  }
+  /* 推荐修改 */
+.main-header.scrolled {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  /* 不要覆盖颜色 */
+}
 
-  .main-header.scrolled .navbar-left,
-  .main-header.scrolled .btn-prenota {
-    color: inherit !important;
-  }
+  
   .main-header {
     background-color: #F7F7F7;
   }
@@ -2211,8 +2226,8 @@ body.home-page.dark-navbar .menu-toggle:hover .menu-text {
 }
 @media (max-width: 768px) {
   .contatti-location-title {
-    font-size: 2.2rem; /* 你可以根据需要再小一点，例如2.2rem */
-    line-height: 1.3;  /* 可选，调整行间距 */
+    font-size: 2.2em; /* 你可以根据需要再小一点，例如2.2rem */
+    line-height: 1.2;  /* 可选，调整行间距 */
   }
 }
 @media (max-width: 768px) {
@@ -2229,5 +2244,10 @@ body.home-page.dark-navbar .menu-toggle:hover .menu-text {
 @media (max-width: 768px) {
   .bamboo-overlay {
     display: none;
+  }
+}
+@media (max-width: 768px) {
+  .corner-icon {
+    display: none !important;
   }
 }

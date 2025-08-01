@@ -191,40 +191,29 @@ document.addEventListener("DOMContentLoaded", function () {
   const isHomePage = document.body.classList.contains("home-page");
 
   if (window.scrollY > 50) {
-    // 所有页面滚动后：统一为灰色图标与灰字
-    hamburgerIcon.src = "images/hamburger-icon-gray.png";
+    hamburgerIcon.src = grayIcon;
     menuText.style.color = "#777";
   } else {
     if (isHomePage) {
-      // 首页未滚动：白色图标 + 白色文字
       hamburgerIcon.src = "images/hamburger-icon-white.png";
       menuText.style.color = "#F7F7F7";
     } else {
-      // 其它页面未滚动：黑色图标 + 黑色文字
       hamburgerIcon.src = blackIcon;
       menuText.style.color = "#000";
     }
   }
 }
 
-let isHovering = false;  // 👈 添加在顶部变量区
-
-// hover 联动触发（使用状态锁）
-menuToggle.addEventListener("mouseenter", () => {
-  isHovering = true;
-  setGold();
-});
-menuToggle.addEventListener("mouseleave", () => {
-  isHovering = false;
-  setNormal();  // ✅ 正确：加上括号
-});
+  // hover 联动触发
+  menuToggle.addEventListener("mouseenter", setGold);
+  menuToggle.addEventListener("mouseleave", setNormal);
 
   // 滚动时判断是否需要切换
-window.addEventListener("scroll", function () {
-  if (!isHovering) {
-    setNormal();
-  }
-});
+  window.addEventListener("scroll", function () {
+    if (!menuToggle.matches(":hover")) {
+      setNormal();
+    }
+  });
 
   // 初始化执行
   setNormal();
