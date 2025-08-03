@@ -125,12 +125,48 @@
 
 <script src="script.js"></script>
 
+<!-- ✅ 全屏滑出菜单背景图（缺失的部分） -->
+<div id="menuSlideImage" class="menu-slide-image">
+  <img src="images/menu-slide.jpg" alt="Menu Slide Image" />
+
+  <!-- ✅ 改成主导航完全一致的结构和 class -->
+  <header class="main-header overlay-header">
+    <nav class="navbar">
+      <div class="navbar-left clickable-area menu-toggle" id="menuToggleOverlay">
+        <img src="images/hamburger-icon-white.png" alt="Menu Icon" class="hamburger-icon" />
+        <span class="btn-prenota menu-text">MENU</span>
+      </div>
+      <div class="navbar-center">
+        <a href="index.html" class="logo-link">
+          <img src="images/168_logo.png" alt="Logo" class="logo" />
+        </a>
+      </div>
+      <div class="navbar-right">
+        <a href="contatti.html" class="btn-prenota">PRENOTA</a>
+      </div>
+    </nav>
+  </header>
+
+  <div id="menu-page" class="menu-page">
+  <div class="menu-links">
+    <div>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="filosofia.html">Filosofia</a>
+    </div>
+    <div>
+      <a href="location.html">Location</a>
+      <a href="contatti.html">Contatti</a>
+    </div>
+  </div>
+</div>
+</div>
+
 <div class="custom-cursor">
   <img src="images/cursor-circle-large.png" class="cursor-core" />
   <img src="images/cursor-arrows-large.png" class="cursor-arrows" />
 </div>
 
-<script src="script.js"></script>
 </body>
 
 <script>

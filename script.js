@@ -33,11 +33,45 @@ document.addEventListener('DOMContentLoaded', () => {
   observers.forEach(el => observer.observe(el));
 });
 
+//菜单滑出图逻辑
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menuToggleContainer");
+  const menuToggleOverlay = document.getElementById("menuToggleOverlay");
+  const menuSlideImage = document.getElementById("menuSlideImage");
+  const navbar = menuSlideImage.querySelector(".navbar");
+  const menuPage = menuSlideImage.querySelector("#menu-page"); // ✅ 新增
+
+  // 打开滑出图
+  menuToggle.addEventListener("click", function () {
+    menuSlideImage.classList.add("active");
+    navbar.classList.remove("navbar-reveal");
+    menuPage.classList.add("active"); // ✅ 同时显示五个文本
+    // 判断是否为手机端
+const isMobile = window.innerWidth <= 768;
+
+if (isMobile) {
+  navbar.classList.add("navbar-reveal");
+} else {
+  setTimeout(() => {
+    navbar.classList.add("navbar-reveal");
+  }, 300);
+}
+  });
+
+  // 关闭滑出图
+  if (menuToggleOverlay) {
+    menuToggleOverlay.addEventListener("click", function () {
+      menuSlideImage.classList.remove("active");
+      menuPage.classList.remove("active"); // ✅ 同时隐藏五个文本
+    });
+  }
+});
+
 // 图片画廊逻辑（拖动 + 自动吸附）
 document.addEventListener("DOMContentLoaded", () => {
   const wrapper = document.querySelector(".gallery-scroll-wrapper");
   const items = wrapper.querySelectorAll(".gallery-item");
-
+  
   scrollToCenter(4); // 初始居中第五张
 
   function scrollToCenter(index) {
@@ -218,3 +252,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // 初始化执行
   setNormal();
 });
+
+// 给滑出菜单中的当前页面链接加上 .current-page
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".menu-links a");
+  const currentPath = window.location.pathname.split("/").pop(); // 取最后部分 e.g. menu.html
+
+  links.forEach(link => {
+    if (link.getAttribute("href") === currentPath) {
+      link.classList.add("current-page");
+    }
+  });
+});
+

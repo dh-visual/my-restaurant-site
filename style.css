@@ -1642,6 +1642,212 @@ body.home-page.dark-navbar .menu-toggle:hover .menu-text {
   border-top: none !important;
 }
 
+.menu-slide-image {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  z-index: 9998;
+  transition: top 0.6s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.menu-slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 激活状态：滑下展示 */
+.menu-slide-image.active {
+  top: 0;
+}
+
+/* ✅ 使用首页布局，应用于滑出图里的导航栏 */
+
+.menu-slide-image .main-header.overlay-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center; /* 保证 navbar 居中 */
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  background-color: transparent; /* ✅ 防止出现白底 */
+  z-index: 10000;
+}
+
+.menu-slide-image .navbar {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-slide-image .navbar-left,
+.menu-slide-image .navbar-right {
+  display: flex;
+  align-items: center;
+  padding-left: 2vw !important;
+  padding-right: 2vw !important;
+}
+
+.menu-slide-image .hamburger-icon {
+  width: 20px;
+  margin-right: 8px;
+}
+
+.menu-slide-image .btn-prenota,
+.menu-slide-image .menu-text {
+  font-size: 1.1em;
+  font-family: inherit;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.menu-slide-image .logo {
+  height: 50px;
+  width: auto;
+}
+
+/* 初始状态：导航栏内容被“推下去”且透明 */
+.menu-slide-image .navbar {
+  transform: translateY(60%);
+  opacity: 0;
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+/* 激活状态：向上滑入 */
+.menu-slide-image .navbar-reveal {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.menu-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: translateY(-100%);
+  transition: transform 0.6s ease;
+  opacity: 0;
+  transform: translateY(-150%);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: transform;
+}
+
+.menu-page.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.menu-links {
+  text-align: center;
+  z-index: 1000;
+}
+
+.menu-links a {
+  display: inline-block;
+  font-size: 6vw;              /* 👈 字体更大 */
+  color: white;
+  text-decoration: none;
+  margin: 2.5vw 3vw;           /* 👈 上下左右间距更大 */
+  position: relative;
+  transition: color 0.3s ease;
+  font-family: 'Playfair Display', serif;  /* 保留高级衬线字体 */
+  font-weight: 500;
+  letter-spacing: 1.5px;       /* 👈 字母间距更宽 */
+  line-height: 1.4;            /* 👈 行距更宽 */
+  text-transform: none;        /* 👈 保留首字母大写，如你现在的样式 */
+}
+
+.menu-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: bottom right;
+}
+
+.menu-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.menu-links {
+  transform: translateY(60%);
+  opacity: 0;
+  transition: transform 0.5s ease-out 0.2s, opacity 0.5s ease-out 0.2s;
+}
+
+.menu-page.active .menu-links {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.menu-links a.current-page {
+  position: relative;
+}
+
+.menu-links a.current-page::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.menu-links {
+  max-width: 80vw;
+  margin: 0 auto;
+  text-align: center;
+  pointer-events: none;       /* ✅ 默认不接受点击 */
+}
+
+.menu-links > div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px 40px; /* 控制链接之间间距 */
+}
+
+.menu-links a {
+  display: inline-flex;              /* ✅ 精确包裹内容 */
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;                 /* ✅ 缩小内边距 */
+  font-size: 5vw;
+  max-width: none;                  /* ✅ 去掉横向限制 */
+  line-height: 1.2;
+  pointer-events: auto;       /* ✅ 仅按钮可点击 */
+}
 /* ========== 响应式优化 ========== */
 
 /* 屏幕宽度小于 1024px（平板） */
@@ -2249,5 +2455,53 @@ body.home-page.dark-navbar .menu-toggle:hover .menu-text {
 @media (max-width: 768px) {
   .corner-icon {
     display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  /* 隐藏滑出菜单页中的 logo 和 prenota */
+  .menu-slide-image .navbar-center,
+  .menu-slide-image .navbar-right {
+    display: none;
+  }
+
+  /* 五个按钮改为竖排并放大字体 */
+  .menu-links > div {
+    flex-direction: column;
+    gap: 20px; /* 垂直间距 */
+  }
+
+  .menu-links a {
+    font-size: 2.2em !important; /* 覆盖之前的 vw 设置 */
+    margin: 10px 0;             /* 上下间距 */
+  }
+}
+@media (max-width: 768px) {
+  .menu-slide-image .overlay-header .navbar {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .menu-slide-image .overlay-header .navbar-left,
+  .menu-slide-image .overlay-header .menu-toggle {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    top: 20px !important;
+    left: 16px !important;
+    position: absolute !important;
+    display: flex !important;
+    align-items: center !important;
+    z-index: 9999 !important;
+  }
+
+  .menu-slide-image .hamburger-icon {
+    width: 28px;
+    height: auto;
+  }
+
+  .menu-slide-image .menu-text {
+    font-size: 14px;
+    margin-left: 6px;
   }
 }
